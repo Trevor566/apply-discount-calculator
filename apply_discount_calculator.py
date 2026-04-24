@@ -1,0 +1,30 @@
+def apply_discount(price, discount):
+    if not isinstance(price, (int, float)):
+        return "The price should be a number"
+
+    if not isinstance(discount, (int, float)):
+        return "The discount should be a number"
+
+    if price <= 0:
+        return "The price should be greater than 0"
+
+    if discount < 0 or discount > 100:
+        return "The discount should be between 0 and 100"
+
+    discount_amount = (discount / 100) * price
+    final_price = price - discount_amount
+
+    return final_price
+
+
+# User input
+try:
+    price_input = float(input("Enter the price: "))
+    discount_input = float(input("Enter the discount percentage: "))
+
+    result = apply_discount(price_input, discount_input)
+
+    print(f"Final price: {result}")
+
+except ValueError:
+    print("Invalid input. Please enter numeric values.")
